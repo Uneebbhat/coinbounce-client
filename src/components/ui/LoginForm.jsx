@@ -1,17 +1,11 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import useSignup from "../../hooks/useSignup";
+import useLogin from "../../hooks/useLogin";
 
-const SignupForm = () => {
-  const {
-    formData,
-    handleSubmitForm,
-    handleInputChange,
-    handleFileChange,
-    ToastContainer,
-  } = useSignup();
-
+const LoginForm = () => {
+  const { formData, handleSubmitForm, handleInputChange, ToastContainer } =
+    useLogin();
   return (
     <>
       <ToastContainer theme="dark" />
@@ -20,20 +14,6 @@ const SignupForm = () => {
         onSubmit={handleSubmitForm}
         autoComplete="off"
       >
-        <input
-          type="file"
-          name="profilePic"
-          id="profilePic"
-          onChange={handleFileChange}
-        />
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Mike Ethan"
-          value={formData.username}
-          onChange={handleInputChange}
-        />
         <input
           type="email"
           name="email"
@@ -54,11 +34,11 @@ const SignupForm = () => {
           Submit
         </Button>
         <p>
-          Already have an account? <Link to={"/login"}>Login</Link>
+          Don't have an account? <Link to={"/signup"}>Signup</Link>
         </p>
       </form>
     </>
   );
 };
 
-export default SignupForm;
+export default LoginForm;

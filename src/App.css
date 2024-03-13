@@ -23,21 +23,21 @@
 }
 
 /* Signup page */
-.signup-wrapper {
+.auth-wrapper {
   margin-top: 20px;
   padding: 0 50px;
 }
 
-.signup-wrapper h2 {
+.auth-wrapper h2 {
   font-size: clamp(1.5rem, 10vw, 3rem);
   margin-bottom: 20px;
 }
 
-.signup-wrapper .signup-form {
+.auth-wrapper .signup-form {
   gap: 20px;
 }
 
-.signup-wrapper .signup-form a {
+.auth-wrapper .signup-form a {
   color: greenyellow;
   font-weight: 700;
 }
@@ -47,7 +47,7 @@
     padding: 20px;
   }
 
-  .signup-wrapper {
+  .auth-wrapper {
     padding: 0 20px;
   }
 }

@@ -1,0 +1,26 @@
+catch (error) {
+      if (error.response) {
+        if (error.response.status === 400) {
+          const errors = error.response.data.errors;
+          if (errors && errors.length > 0) {
+            // Check if errors array exists and has elements
+            const errorMessage = errors[0].msg;
+            if (errorMessage === "Password is too short") {
+              toast.error("Password is too short");
+            } else if (errorMessage === "Username is too short") {
+              toast.error("Username is too short");
+            } else if (errorMessage === "Invalid email") {
+              toast.error("Invalid email");
+            } else {
+              toast.error("An error occurred. Please try again later.");
+            }
+          } else {
+            toast.error("An error occurred. Please try again later.");
+          }
+        } else {
+          toast.error("An error occurred. Please try again later.");
+        }
+      } else {
+        toast.error("An error occurred. Please check your network connection.");
+      }
+    }

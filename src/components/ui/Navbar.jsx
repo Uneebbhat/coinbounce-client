@@ -3,9 +3,10 @@ import logo from "../../assets/logo.svg";
 import AvatarMenu from "./AvatarMenu";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import authStore from "../../context/authStore";
 
 const Navbar = () => {
-  const token = false;
+  const { token } = authStore();
   return (
     <>
       <header className="header">
