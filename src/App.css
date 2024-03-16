@@ -25,7 +25,6 @@
 /* Signup page */
 .auth-wrapper {
   margin-top: 20px;
-  padding: 0 50px;
 }
 
 .auth-wrapper h2 {
@@ -71,6 +70,23 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Create blog page form */
+.create-blog-wrapper h2 {
+  font-size: clamp(1.5rem, 10vw, 2rem);
+  margin: 30px 0;
+}
+
+.create-blog-form {
+  /* background-color: red; */
+  max-width: 100%;
+  width: 600px;
+}
+
+.create-blog-form > * {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 768px) {

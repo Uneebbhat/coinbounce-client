@@ -22,7 +22,8 @@ a {
   color: white;
 }
 
-input {
+input,
+textarea {
   outline: 0;
   border: 1px solid white;
   background-color: transparent;
@@ -57,4 +58,14 @@ input {
 .container {
   max-width: 1400px;
   margin-inline: auto;
+}
+
+.wrapper {
+  padding: 0 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 0 20px;
+  }
 }

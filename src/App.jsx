@@ -5,6 +5,7 @@ import Container from "./components/ui/Container";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
+import CreateBlogPage from "./pages/CreateBlogPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/create-blog" element={<CreateBlogPage />} />
           </Routes>
         </Router>
       </Container>
