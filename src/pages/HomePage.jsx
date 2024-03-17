@@ -6,7 +6,7 @@ import CardSkeleton from "../components/ui/CardSkeleton";
 
 const HomePage = () => {
   const { articleData, loadMoreArticles, loading } = useFetchExternalData();
-  console.log(articleData);
+  // console.log(articleData);
   return (
     <>
       <div className="wrapper home-wrapper flex col align-center">

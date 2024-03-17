@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const useCreateBlog = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,9 @@ const useCreateBlog = () => {
     description: "",
     blogPic: null,
   });
+
+  const token = Cookies.get("token");
+  // console.log(token);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +31,12 @@ const useCreateBlog = () => {
     try {
       const response = await axios.post(
         "http://localhost:5000/api/create-blog",
-        formData
+        formData,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
       );
       console.log(response.data);
     } catch (error) {
@@ -37,7 +46,7 @@ const useCreateBlog = () => {
   return {
     formData,
     handleInputChange,
-    handleSubmitBlog,
+    handleSubmitBLog,
   };
 };
 
