@@ -18,20 +18,28 @@ const useCreateBlog = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, blogPic: file });
+  };
+
   const handleSubmitBLog = async (e) => {
     e.preventDefault();
 
-    const { title, description } = formData;
-
-    if (!title || !description) {
+    if (!formData.title || !formData.description) {
       toast.error("All fields are required");
       return;
     }
 
     try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("blogPic", formData.blogPic);
+      formDataToSend.append("title", formData.title);
+      formDataToSend.append("description", formData.description);
+
       const response = await axios.post(
         "http://localhost:5000/api/create-blog",
-        formData,
+        formDataToSend,
         {
           headers: {
             Authorization: token,
@@ -39,6 +47,7 @@ const useCreateBlog = () => {
         }
       );
       console.log(response.data);
+      toast.success("Blog created successfully");
     } catch (error) {
       toast.error(error.message);
     }
@@ -47,6 +56,8 @@ const useCreateBlog = () => {
     formData,
     handleInputChange,
     handleSubmitBLog,
+    ToastContainer,
+    handleFileChange,
   };
 };
 

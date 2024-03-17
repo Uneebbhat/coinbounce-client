@@ -3,10 +3,23 @@ import Button from "@mui/material/Button";
 import useCreateBlog from "../../hooks/useCreateBlog";
 
 const CreateBlogForm = () => {
-  const { formData, handleInputChange, handleSubmitBLog } = useCreateBlog();
+  const {
+    formData,
+    handleInputChange,
+    handleSubmitBLog,
+    handleFileChange,
+    ToastContainer,
+  } = useCreateBlog();
   return (
     <>
+      <ToastContainer theme="dark" />
       <form className="create-blog-form flex col" onSubmit={handleSubmitBLog}>
+        <input
+          type="file"
+          name="blogPic"
+          id="blogPic"
+          onChange={handleFileChange}
+        />
         <input
           type="text"
           name="title"
