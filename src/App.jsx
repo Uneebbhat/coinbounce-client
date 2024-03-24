@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import CreateBlogPage from "./pages/CreateBlogPage";
+import BlogsPage from "./pages/BlogsPage";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   return (
@@ -17,7 +19,10 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/create-blog" element={<CreateBlogPage />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/create-blog" element={<CreateBlogPage />} />
+            </Route>
+            <Route path="/blogs" element={<BlogsPage />} />
           </Routes>
         </Router>
       </Container>
