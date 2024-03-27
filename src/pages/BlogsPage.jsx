@@ -1,6 +1,7 @@
 import React from "react";
 import BlogsCard from "../components/ui/BlogsCard";
 import useGetAllBlogs from "../hooks/useGetAllBlogs";
+import { Link } from "react-router-dom";
 
 const BlogsPage = () => {
   const { allBlogs } = useGetAllBlogs();
@@ -11,7 +12,9 @@ const BlogsPage = () => {
         {allBlogs.length > 0 ? (
           <div className="blogs-card-wrapper flex col">
             {allBlogs.map((blog) => (
-              <BlogsCard blog={blog} />
+              <Link to={`/blog/${blog._id}`}>
+                <BlogsCard blog={blog} />
+              </Link>
             ))}
           </div>
         ) : (

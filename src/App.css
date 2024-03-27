@@ -126,6 +126,26 @@
   gap: 20px;
 }
 
+/* Blog Detail Page */
+.blog-detail-page {
+  padding: 50px;
+}
+
+.blog-detail-page .detail-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.blog-detail-page .detail-wrapper hr {
+  margin: 15px 0;
+}
+
+.blog-detail-page .detail-wrapper p {
+  /* margin-top: 20px; */
+  line-height: 1.5;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     padding: 20px;
@@ -136,7 +156,8 @@
   }
 
   .home-wrapper,
-  .blogs-wrapper {
+  .blogs-wrapper,
+  .blog-detail-page {
     padding: 20px;
   }
 }
