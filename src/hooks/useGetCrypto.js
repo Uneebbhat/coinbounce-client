@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const useGetCrypto = () => {
   const [cryptoData, setCryptoData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,15 +13,17 @@ const useGetCrypto = () => {
         const response = await axios.get(url);
         setCryptoData(response.data);
         console.log(response.data);
+        setLoading(false);
       } catch (e) {
         console.error("Error fetching crypto data:", e.message);
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  return { cryptoData };
+  return { cryptoData, loading };
 };
 
 export default useGetCrypto;
