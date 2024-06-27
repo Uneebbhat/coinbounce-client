@@ -1,28 +1,26 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-const useFetchNews = () => {
-  const apiUrl = "http://localhost:5000/api/get-news";
-  const [data, setData] = useState([]);
+const useGetAllBlogs = () => {
+  const [allBlogs, setAllBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const apiUrl = "http://localhost:5000/api/get-blogs";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await axios.get(apiUrl);
-        setData(result.data.data);
+        setAllBlogs(result.data.data);
         setLoading(false);
-        // console.log(result.data.articles);
+        console.log(result.data);
       } catch (error) {
         console.error("Error fetching news:", error);
         setLoading(false);
       }
     };
-
     fetchData();
-  }, [apiUrl]);
-
-  return { data, loading };
+  }, []);
+  return { allBlogs, loading };
 };
 
-export default useFetchNews;
+export default useGetAllBlogs;

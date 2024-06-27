@@ -1,4 +1,3 @@
-// useAuthStore.js
 import { create } from "zustand";
 
 const useAuthStore = create((set) => ({
@@ -21,8 +20,8 @@ const useAuthStore = create((set) => ({
   },
 
   getToken: () => {
-    localStorage.getItem("token");
-    localStorage.getItem("profilePic", profilePic);
+    return localStorage.getItem("token");
+    // localStorage.getItem("profilePic", profilePic);
   },
 }));
 

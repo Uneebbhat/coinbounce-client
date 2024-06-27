@@ -13,7 +13,7 @@ const TableSkeleton = () => {
   return (
     <>
       {[...Array(12)].map((_, i) => (
-        <Table>
+        <Table key={i}>
           <TableHeader>
             <TableRow>
               <TableHead className="w-[100px]">ID</TableHead>

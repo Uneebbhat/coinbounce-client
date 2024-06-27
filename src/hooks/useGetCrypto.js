@@ -12,7 +12,7 @@ const useGetCrypto = () => {
       try {
         const response = await axios.get(url);
         setCryptoData(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         setLoading(false);
       } catch (e) {
         console.error("Error fetching crypto data:", e.message);

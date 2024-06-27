@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
-import useSignup from "@/hooks/useSignup";
 import useAuthStore from "@/context/useAuthStore";
 
 const UserAvatar = () => {

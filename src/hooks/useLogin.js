@@ -35,7 +35,7 @@ const useLogin = () => {
     }
   };
 
-  return { handleInputChange, handleForm, isCreating };
+  return { handleInputChange, handleForm, isCreating, formData };
 };
 
 export default useLogin;

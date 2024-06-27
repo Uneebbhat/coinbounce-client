@@ -13,7 +13,7 @@ import useLogin from "@/hooks/useLogin.js";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
-  const { handleInputChange, handleForm, isCreating } = useLogin();
+  const { handleInputChange, handleForm, isCreating, formData } = useLogin();
 
   return (
     <>
@@ -61,7 +61,7 @@ const LoginPage = () => {
               className="w-full"
               type="submit"
               onClick={handleForm}
-              disabled={isCreating}
+              disabled={isCreating || !formData.email || !formData.password}
             >
               {isCreating ? "Please wait" : "Login"}
             </Button>

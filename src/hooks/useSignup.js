@@ -62,6 +62,7 @@ const useSignup = () => {
     handleForm,
     isCreating,
     userData,
+    formData,
   };
 };
 

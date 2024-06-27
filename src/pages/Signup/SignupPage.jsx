@@ -13,8 +13,13 @@ import useSignup from "@/hooks/useSignup.js";
 import { Link } from "react-router-dom";
 
 const SignupPage = () => {
-  const { handleInputChange, handleFileChange, handleForm, isCreating } =
-    useSignup();
+  const {
+    handleInputChange,
+    handleFileChange,
+    handleForm,
+    isCreating,
+    formData,
+  } = useSignup();
 
   return (
     <>
@@ -85,7 +90,12 @@ const SignupPage = () => {
               className="w-full"
               type="submit"
               onClick={handleForm}
-              disabled={isCreating}
+              disabled={
+                isCreating ||
+                !formData.name ||
+                !formData.email ||
+                !formData.password
+              }
             >
               {isCreating ? "Please wait" : "Create account"}
             </Button>
