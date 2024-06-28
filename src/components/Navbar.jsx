@@ -39,9 +39,9 @@ const Navbar = () => {
           <nav className="navbar">
             <ul className="flex items-center">
               {routes.map((route) => (
-                <Button variant="ghost" key={route.route}>
-                  <Link to={route.route}>{route.label}</Link>
-                </Button>
+                <Link to={route.route} key={route.route}>
+                  <Button variant="ghost">{route.label}</Button>
+                </Link>
               ))}
             </ul>
           </nav>

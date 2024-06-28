@@ -13,6 +13,7 @@ import useAuthStore from "@/context/useAuthStore";
 
 const UserAvatar = () => {
   const { profilePic, clearToken } = useAuthStore();
+
   return (
     <>
       <DropdownMenu>

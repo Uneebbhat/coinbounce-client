@@ -9,6 +9,8 @@ import NotFound from "@/pages/NotFound.jsx";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import BlogsPage from "@/pages/Blogs/BlogsPage";
 import CryptoPage from "@/pages/Crypto/CryptoPage";
+import CreateBlogPage from "@/pages/CreateBlog/CreateBlogPage";
+import BlogDetailPage from "@/pages/BlogDetail/BlogDetailPage";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route path="/crypto" element={<CryptoPage />} />
               <Route path="/blogs" element={<BlogsPage />} />
+              <Route path="/create-blog" element={<CreateBlogPage />} />
+              <Route path="/get-blog/:id" element={<BlogDetailPage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

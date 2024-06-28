@@ -5,13 +5,20 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import UserAvatar from "@/components/UserAvatar";
 import nothingShow from "@/assets/nothing.jpg";
 import { Link } from "react-router-dom";
 import BlogSkeleton from "@/components/BlogSkeleton";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const BlogsPage = () => {
   const { allBlogs, loading } = useGetAllBlogs();
+
+  // Function to get initials from name
+  const getInitials = (name) => {
+    if (!name) return "";
+    const parts = name.split(" ");
+    return parts.map((part) => part.charAt(0)).join("");
+  };
 
   return (
     <div className="blogs-container flex flex-col items-center">
@@ -22,18 +29,23 @@ const BlogsPage = () => {
           allBlogs.map((item) => (
             <div className="blog mb-[50px]" key={item._id}>
               <HoverCard>
-                <HoverCardTrigger className="font-medium text-gray-800">
+                <HoverCardTrigger className="font-medium text-gray-800 underline">
                   {item.name}
                 </HoverCardTrigger>
                 <HoverCardContent className="flex items-center gap-2">
-                  <UserAvatar />
+                  <Avatar>
+                    <AvatarImage src={item.userImg} />
+                    <AvatarFallback>{getInitials(item.name)}</AvatarFallback>
+                  </Avatar>
                   {item.name}
                 </HoverCardContent>
               </HoverCard>
-              <h2 className="md:text-3xl text-2xl font-semibold text-gray-900">
-                {item.blogTitle}
-              </h2>
-              <p className="text-gray-800 blog-content">{item.blogDesc}</p>
+              <Link to={`/get-blog/${item._id}`}>
+                <h2 className="md:text-4xl text-2xl font-bold text-gray-900">
+                  {item.blogTitle}
+                </h2>
+                <p className="text-gray-800 blog-content">{item.blogDesc}</p>
+              </Link>
             </div>
           ))
         ) : (
