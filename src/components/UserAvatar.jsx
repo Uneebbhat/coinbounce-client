@@ -8,10 +8,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAuthStore from "@/context/useAuthStore";
+import useGetProfile from "@/hooks/useGetProfile";
 
-const UserAvatar = () => {
+const UserAvatar = ({ id }) => {
   const { profilePic, clearToken } = useAuthStore();
 
   return (
@@ -26,7 +27,7 @@ const UserAvatar = () => {
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <Link to={"/profile"}>
+          <Link to={`/profile/${id}`}>
             <DropdownMenuItem>Profile</DropdownMenuItem>
           </Link>
           <Link to={"/settings"}>

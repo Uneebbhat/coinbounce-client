@@ -4,7 +4,7 @@ import { Outlet, Navigate } from "react-router-dom";
 const ProtectedRoutes = () => {
   const { getToken } = useAuthStore();
   let auth = { token: getToken() };
-  return auth.token ? <Outlet /> : <Navigate to={"/"} />;
+  return auth.token ? <Outlet /> : <Navigate to={"/login"} />;
 };
 
 export default ProtectedRoutes;

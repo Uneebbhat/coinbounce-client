@@ -11,6 +11,7 @@ import BlogsPage from "@/pages/Blogs/BlogsPage";
 import CryptoPage from "@/pages/Crypto/CryptoPage";
 import CreateBlogPage from "@/pages/CreateBlog/CreateBlogPage";
 import BlogDetailPage from "@/pages/BlogDetail/BlogDetailPage";
+import ProfilePage from "@/pages/Profile/ProfilePage";
 
 function App() {
   return (
@@ -22,11 +23,12 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/crypto" element={<CryptoPage />} />
             <Route element={<ProtectedRoutes />}>
-              <Route path="/crypto" element={<CryptoPage />} />
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/create-blog" element={<CreateBlogPage />} />
               <Route path="/get-blog/:id" element={<BlogDetailPage />} />
+              <Route path="/profile/:id" element={<ProfilePage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
