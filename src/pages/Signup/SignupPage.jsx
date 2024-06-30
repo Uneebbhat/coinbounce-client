@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card.jsx";
 import { Input } from "@/components/ui/input.jsx";
 import { Label } from "@/components/ui/label.jsx";
+import useChangeTitle from "@/hooks/useChangeTitle";
 import useSignup from "@/hooks/useSignup.js";
 import { Link } from "react-router-dom";
 
@@ -20,6 +21,8 @@ const SignupPage = () => {
     isCreating,
     formData,
   } = useSignup();
+
+  useChangeTitle("Coinbounce | Signup to explore the world!");
 
   return (
     <>

@@ -9,7 +9,7 @@ const useLogin = () => {
     password: "",
   });
   const [isCreating, setIsCreating] = useState(false);
-  const { setToken, setPic } = useAuthStore();
+  const { setToken, setPic, setId } = useAuthStore();
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -25,6 +25,7 @@ const useLogin = () => {
         formData
       );
       setToken(result.data.token);
+      setId(result.data.existingUser._id);
       setPic(result.data.existingUser.profilePic);
       setIsCreating(false);
       navigate("/");

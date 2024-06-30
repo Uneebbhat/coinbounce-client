@@ -5,6 +5,7 @@ import useCreateBlog from "@/hooks/useCreateBlog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card.jsx";
 import { Textarea } from "@/components/ui/textarea";
+import useChangeTitle from "@/hooks/useChangeTitle";
 
 const CreateBlogPage = () => {
   const {
@@ -14,6 +15,9 @@ const CreateBlogPage = () => {
     handleInputChange,
     handleForm,
   } = useCreateBlog();
+
+  useChangeTitle("Coinbounce | Create a blog to amaze the world");
+
   return (
     <>
       <div className="create-blog-container max-w-full w-[500px] mx-auto my-[40px]">

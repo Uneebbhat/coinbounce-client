@@ -9,11 +9,12 @@ import nothingShow from "@/assets/nothing.jpg";
 import { Link } from "react-router-dom";
 import BlogSkeleton from "@/components/BlogSkeleton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import useChangeTitle from "@/hooks/useChangeTitle";
 
 const BlogsPage = () => {
   const { allBlogs, loading } = useGetAllBlogs();
+  useChangeTitle("Coinbounce | See all amazing blogs");
 
-  // Function to get initials from name
   const getInitials = (name) => {
     if (!name) return "";
     const parts = name.split(" ");
@@ -41,7 +42,7 @@ const BlogsPage = () => {
                 </HoverCardContent>
               </HoverCard>
               <Link to={`/get-blog/${item._id}`}>
-                <h2 className="md:text-4xl text-2xl font-bold text-gray-900">
+                <h2 className="md:text-4xl text-xl font-bold text-gray-900">
                   {item.blogTitle}
                 </h2>
                 <p className="text-gray-800 blog-content">{item.blogDesc}</p>

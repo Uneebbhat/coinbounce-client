@@ -12,8 +12,9 @@ import { Link, useParams } from "react-router-dom";
 import useAuthStore from "@/context/useAuthStore";
 import useGetProfile from "@/hooks/useGetProfile";
 
-const UserAvatar = ({ id }) => {
-  const { profilePic, clearToken } = useAuthStore();
+const UserAvatar = () => {
+  const { profilePic, clearToken, getId } = useAuthStore();
+  const id = getId();
 
   return (
     <>

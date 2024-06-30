@@ -9,11 +9,13 @@ import {
 } from "@/components/ui/card.jsx";
 import { Input } from "@/components/ui/input.jsx";
 import { Label } from "@/components/ui/label.jsx";
+import useChangeTitle from "@/hooks/useChangeTitle";
 import useLogin from "@/hooks/useLogin.js";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const { handleInputChange, handleForm, isCreating, formData } = useLogin();
+  useChangeTitle("Coinbounce | Login to your world");
 
   return (
     <>

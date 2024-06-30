@@ -12,7 +12,7 @@ const useSignup = () => {
   });
   const [isCreating, setIsCreating] = useState(false);
   const [userData, setUserData] = useState("");
-  const { setToken, setPic } = useAuthStore();
+  const { setToken, setPic, setId } = useAuthStore();
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
@@ -44,6 +44,7 @@ const useSignup = () => {
       );
 
       setToken(result.data.token);
+      setId(result.data.newUser._id);
       setUserData(result.data.newUser.profilePic);
       setPic(result.data.newUser.profilePic);
       setIsCreating(false);

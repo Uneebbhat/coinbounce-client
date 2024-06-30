@@ -1,17 +1,21 @@
 import useAuthStore from "@/context/useAuthStore";
-import useGetProfile from "@/hooks/useGetProfile";
+import useChangeTitle from "@/hooks/useChangeTitle";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ProfilePage = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState(null);
+  const [myBlogs, setMyBlogs] = useState([]);
   const { token } = useAuthStore();
-  console.log(token);
+
+  useChangeTitle("Coinbounce | See your profile");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProfile = async () => {
       try {
         const result = await axios.get(
           `http://localhost:5000/api/profile/${id}`,
@@ -27,19 +31,81 @@ const ProfilePage = () => {
         console.log(error);
       }
     };
-    fetchData();
-  }, [id]);
+    fetchProfile();
+  }, [id, token]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const blogResult = await axios.get(
+          `http://localhost:5000/api/profile/${id}/blogs`,
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        console.log(blogResult.data.data);
+        setMyBlogs(blogResult.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchBlogs();
+  }, [id, token]);
+
+  if (!profile) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
-      <div className="profile-wrapper">
-        <div className="profile-pic">
+      <div className="profile-wrapper flex flex-col items-center">
+        <div className="profile-pic mt-4">
           <img
             src={profile.profilePic}
             alt=""
             className="w-40 h-40 overflow-hidden rounded-full"
           />
         </div>
-        <h2>Name: {profile.name}</h2>
+        <div className="profile-info mt-2">
+          <h2 className="text-3xl font-semibold">{profile.name}</h2>
+        </div>
+        <Separator className="mt-4 mb-4" />
+        <div className="tab-wrapper">
+          <Tabs
+            defaultValue="my-blogs"
+            className="block w-[100vw] max-w-full mx-auto"
+          >
+            <div className="tabs-list flex flex-col w-[100%] items-center">
+              <TabsList>
+                <TabsTrigger value="my-blogs">My Blogs</TabsTrigger>
+                <TabsTrigger value="saved">Saved</TabsTrigger>
+              </TabsList>
+            </div>
+            <TabsContent value="my-blogs" className="ml-8 mr-8">
+              {myBlogs.length > 0 ? (
+                myBlogs.map((myBlog) => (
+                  <Link to={`/get-blog/${myBlog._id}`} key={myBlog._id}>
+                    <h2 className="md:text-4xl text-xl font-bold text-gray-900">
+                      {myBlog.blogTitle}
+                    </h2>
+                    <p className="text-gray-800 blog-content">
+                      {myBlog.blogDesc}
+                    </p>
+                  </Link>
+                ))
+              ) : (
+                <p>No blogs available.</p>
+              )}
+            </TabsContent>
+            <TabsContent value="saved">
+              <h2 className="text-center mt-4 md:text-4xl text-2xl font-bold">
+                Coming Soon
+              </h2>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </>
   );
