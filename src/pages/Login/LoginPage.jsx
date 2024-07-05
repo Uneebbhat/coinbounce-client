@@ -7,6 +7,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card.jsx";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Input } from "@/components/ui/input.jsx";
 import { Label } from "@/components/ui/label.jsx";
 import useChangeTitle from "@/hooks/useChangeTitle";
@@ -60,10 +66,19 @@ const LoginPage = () => {
                   placeholder="********"
                   onChange={handleInputChange}
                 />
-                <Eye
-                  className="absolute right-5 w-4 cursor-pointer"
-                  onClick={togglePass}
-                />
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Eye
+                        className="absolute right-5 top-2 w-5 cursor-pointer"
+                        onClick={togglePass}
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{showPass ? "Hide password" : "Show passwords"}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             </div>
           </CardContent>
