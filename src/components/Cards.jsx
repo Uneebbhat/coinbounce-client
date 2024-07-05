@@ -21,9 +21,9 @@ const Cards = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Card className="sm:h-[245px] md:h-[345px]">
+              <Card className="h-[290px] sm:h-[340px] md:h-[300px]">
                 <CardHeader>
-                  <CardTitle style={{ overflow: "hidden", height: "200px" }}>
+                  <CardTitle style={{ overflow: "hidden", height: "150px" }}>
                     <img
                       src={item.urlToImage}
                       alt={item.title}

@@ -11,10 +11,13 @@ import { Input } from "@/components/ui/input.jsx";
 import { Label } from "@/components/ui/label.jsx";
 import useChangeTitle from "@/hooks/useChangeTitle";
 import useLogin from "@/hooks/useLogin.js";
+import togglePassword from "@/utils/togglePassword";
+import { Eye } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const { handleInputChange, handleForm, isCreating, formData } = useLogin();
+  const { showPass, togglePass } = togglePassword();
   useChangeTitle("Coinbounce | Login to your world");
 
   return (
@@ -48,14 +51,20 @@ const LoginPage = () => {
 
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input
-                required
-                id="password"
-                name="password"
-                type="password"
-                placeholder="********"
-                onChange={handleInputChange}
-              />
+              <div className="flex items-center relative">
+                <Input
+                  required
+                  id="password"
+                  name="password"
+                  type={showPass ? "text" : "password"}
+                  placeholder="********"
+                  onChange={handleInputChange}
+                />
+                <Eye
+                  className="absolute right-5 w-4 cursor-pointer"
+                  onClick={togglePass}
+                />
+              </div>
             </div>
           </CardContent>
           <CardFooter className="flex flex-col">

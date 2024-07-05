@@ -17,8 +17,7 @@ const useCreateBlog = () => {
     setBlogData({ ...blogData, blogImg: e.target.files[0] });
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = (value, name) => {
     setBlogData({ ...blogData, [name]: value });
   };
 
@@ -38,7 +37,7 @@ const useCreateBlog = () => {
             "Content-Type": "multipart/form-data",
             Authorization: token,
           },
-        }
+        },
       );
       setIsCreating(false);
       setBlogData(result.data);
@@ -52,6 +51,7 @@ const useCreateBlog = () => {
 
   return {
     blogData,
+    setBlogData,
     isCreating,
     handleFileChange,
     handleInputChange,
