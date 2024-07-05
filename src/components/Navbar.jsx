@@ -55,9 +55,9 @@ const Navbar = () => {
               <UserAvatar />
             </>
           ) : (
-            <Button>
-              <Link to="/login">Login</Link>
-            </Button>
+            <Link to="/login">
+              <Button>Login</Button>
+            </Link>
           )}
         </div>
       </header>
