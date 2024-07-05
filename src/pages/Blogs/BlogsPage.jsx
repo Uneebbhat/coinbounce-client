@@ -21,6 +21,10 @@ const BlogsPage = () => {
     return parts.map((part) => part.charAt(0)).join("");
   };
 
+  const createMarkup = (html) => {
+    return { __html: html };
+  };
+
   return (
     <div className="blogs-container flex flex-col items-center">
       <div className="blog-wrapper max-w-full w-[800px] mt-4 flex flex-col">
@@ -41,11 +45,14 @@ const BlogsPage = () => {
                   {item.name}
                 </HoverCardContent>
               </HoverCard>
-              <Link to={`/get-blog/${item._id}`}>
+              <Link to={`/blog/${item._id}`}>
                 <h2 className="md:text-4xl text-xl font-bold text-gray-900">
                   {item.blogTitle}
                 </h2>
-                <p className="text-gray-800 blog-content">{item.blogDesc}</p>
+                <div
+                  className="text-[16px] text-gray-800 blog-content"
+                  dangerouslySetInnerHTML={createMarkup(item.blogDesc)}
+                />
               </Link>
             </div>
           ))

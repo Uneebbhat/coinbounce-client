@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,11 @@ const Navbar = () => {
       route: "/create-blog",
     },
   ];
+  const [active, setActive] = useState("/");
+
+  const handleActiveRoute = (route) => {
+    setActive(route);
+  };
 
   const { token } = useAuthStore();
   return (
@@ -40,7 +45,12 @@ const Navbar = () => {
             <ul className="flex items-center">
               {routes.map((route) => (
                 <Link to={route.route} key={route.route}>
-                  <Button variant="ghost">{route.label}</Button>
+                  <Button
+                    variant={active === route.route ? "" : "ghost"}
+                    onClick={() => handleActiveRoute(route.route)}
+                  >
+                    {route.label}
+                  </Button>
                 </Link>
               ))}
             </ul>

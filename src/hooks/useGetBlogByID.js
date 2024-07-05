@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useGetBlogByID = (id) => {
-  // Accept id as a parameter
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {

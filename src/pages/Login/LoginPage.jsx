@@ -20,6 +20,7 @@ import useLogin from "@/hooks/useLogin.js";
 import togglePassword from "@/utils/togglePassword";
 import { Eye } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Separator } from "@/components/ui/separator";
 
 const LoginPage = () => {
   const { handleInputChange, handleForm, isCreating, formData } = useLogin();
@@ -91,6 +92,7 @@ const LoginPage = () => {
             >
               {isCreating ? "Please wait" : "Login"}
             </Button>
+            <Separator className="mt-4" />
             <CardDescription className={"mt-2 text-[16px] text-black"}>
               Don't have an account?{" "}
               <Link className={"font-bold"} to={"/signup"}>

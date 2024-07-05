@@ -20,6 +20,7 @@ import useSignup from "@/hooks/useSignup.js";
 import { Link } from "react-router-dom";
 import { Eye } from "lucide-react";
 import togglePassword from "@/utils/togglePassword";
+import { Separator } from "@/components/ui/separator";
 
 const SignupPage = () => {
   const {
@@ -126,6 +127,7 @@ const SignupPage = () => {
             >
               {isCreating ? "Please wait" : "Create account"}
             </Button>
+            <Separator className="mt-4" />
             <CardDescription className={"mt-2 text-[16px] text-black"}>
               Already have an account?{" "}
               <Link className={"font-bold"} to={"/login"}>

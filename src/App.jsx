@@ -6,12 +6,13 @@ import SignupPage from "@/pages/Signup/SignupPage.jsx";
 import Container from "@/components/Container";
 import LoginPage from "@/pages/Login/LoginPage.jsx";
 import NotFound from "@/pages/NotFound.jsx";
-import ProtectedRoutes from "./components/ProtectedRoutes";
+import ProtectedRoutes from "@/components/ProtectedRoutes";
 import BlogsPage from "@/pages/Blogs/BlogsPage";
 import CryptoPage from "@/pages/Crypto/CryptoPage";
 import CreateBlogPage from "@/pages/CreateBlog/CreateBlogPage";
 import BlogDetailPage from "@/pages/BlogDetail/BlogDetailPage";
 import ProfilePage from "@/pages/Profile/ProfilePage";
+import EditBlogPage from "@/pages/EditBlog/EditBlogPage";
 
 function App() {
   return (
@@ -27,8 +28,9 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route path="/blogs" element={<BlogsPage />} />
               <Route path="/create-blog" element={<CreateBlogPage />} />
-              <Route path="/get-blog/:id" element={<BlogDetailPage />} />
+              <Route path="/blog/:id" element={<BlogDetailPage />} />
               <Route path="/profile/:id" element={<ProfilePage />} />
+              <Route path="/edit/:id" element={<EditBlogPage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
