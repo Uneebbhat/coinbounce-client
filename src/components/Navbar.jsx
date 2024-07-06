@@ -25,11 +25,6 @@ const Navbar = () => {
       route: "/create-blog",
     },
   ];
-  const [active, setActive] = useState("/");
-
-  const handleActiveRoute = (route) => {
-    setActive(route);
-  };
 
   const { token } = useAuthStore();
   return (
@@ -46,8 +41,7 @@ const Navbar = () => {
               {routes.map((route) => (
                 <Link to={route.route} key={route.route}>
                   <Button
-                    variant={active === route.route ? "" : "ghost"}
-                    onClick={() => handleActiveRoute(route.route)}
+                    variant="ghost"
                   >
                     {route.label}
                   </Button>
