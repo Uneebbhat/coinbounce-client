@@ -6,6 +6,8 @@ import { Link, useParams } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import comingSoon from "@/assets/coming-soon.png";
+import empty from "@/assets/empty.png";
+import { Button } from "@/components/ui/button";
 
 const ProfilePage = () => {
   const { id } = useParams();
@@ -74,11 +76,8 @@ const ProfilePage = () => {
         </div>
         <Separator className="mt-4 mb-4" />
         <div className="tab-wrapper">
-          <Tabs
-            defaultValue="my-blogs"
-            className="block w-[100vw] max-w-full mx-auto"
-          >
-            <div className="tabs-list flex flex-col w-[100%] items-center">
+          <Tabs defaultValue="my-blogs" className="block max-w-full mx-auto">
+            <div className="tabs-list flex flex-col w-[800px] mx-auto items-center">
               <TabsList>
                 <TabsTrigger value="my-blogs">My Blogs</TabsTrigger>
                 <TabsTrigger value="saved">Saved</TabsTrigger>
@@ -87,7 +86,7 @@ const ProfilePage = () => {
             <TabsContent value="my-blogs" className="ml-8 mr-8">
               {myBlogs.length > 0 ? (
                 myBlogs.map((myBlog) => (
-                  <Link to={`/get-blog/${myBlog._id}`} key={myBlog._id}>
+                  <Link to={`/blog/${myBlog._id}`} key={myBlog._id}>
                     <h2 className="md:text-4xl text-xl font-bold text-gray-900">
                       {myBlog.blogTitle}
                     </h2>
@@ -97,7 +96,15 @@ const ProfilePage = () => {
                   </Link>
                 ))
               ) : (
-                <p>No blogs available.</p>
+                <div className="flex flex-col items-center">
+                  <h2 className="text-center mt-4 md:text-4xl text-2xl font-bold mb-4">
+                    No blogs to show
+                  </h2>
+                  <img src={empty} width={150} />
+                  <Link to="/create-blog">
+                    <Button>Upload your blog</Button>
+                  </Link>
+                </div>
               )}
             </TabsContent>
             <TabsContent value="saved" className="flex flex-col items-center">
