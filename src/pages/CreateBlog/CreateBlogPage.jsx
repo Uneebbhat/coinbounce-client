@@ -31,7 +31,8 @@ const CreateBlogPage = () => {
 
   return (
     <>
-      <div className="create-blog-container max-w-full w-[800px] mx-auto my-[40px]">
+      <div className="create-blog-container max-w-full w-[800px] mx-auto my-[10px]">
+        <h2 className="text-center mb-4 text-3xl font-bold">Create a blog</h2>
         <Card className="h-[450px]">
           <CardContent className="grid gap-4">
             <div className="relative">

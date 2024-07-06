@@ -5,11 +5,12 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import nothingShow from "@/assets/nothing.jpg";
+import empty from "@/assets/empty.png";
 import { Link } from "react-router-dom";
 import BlogSkeleton from "@/components/BlogSkeleton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import useChangeTitle from "@/hooks/useChangeTitle";
+import { Button } from "@/components/ui/button";
 
 const BlogsPage = () => {
   const { allBlogs, loading } = useGetAllBlogs();
@@ -58,10 +59,10 @@ const BlogsPage = () => {
           ))
         ) : (
           <div className="flex flex-col items-center mt-4">
-            <img src={nothingShow} alt="Nothing to show" width={350} />
+            <img src={empty} alt="Nothing to show" width={350} />
             <p className="text-3xl font-bold">No blogs uploaded yet</p>
             <Link to="/create-blog" className="mt-2 underline font-semibold">
-              Upload your blog
+              <Button>Upload your blog</Button>
             </Link>
           </div>
         )}

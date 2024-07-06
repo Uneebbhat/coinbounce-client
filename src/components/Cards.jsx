@@ -10,36 +10,25 @@ const Cards = () => {
 
   return (
     <>
-      {loading ? (
-        <CardSkeleton />
-      ) : (
-        <>
-          {data.map((item, i) =>
-            item.urlToImage && item.title ? (
-              <Link
-                to={item.url}
-                key={i}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Card className="h-[290px] sm:h-[340px] md:h-[300px]">
-                  <CardHeader>
-                    <CardTitle style={{ overflow: "hidden", height: "150px" }}>
-                      <img
-                        src={item.urlToImage}
-                        alt={item.title}
-                        style={{ width: "100%", objectFit: "contain" }}
-                      />
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="card-content">{item.description}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-            ) : null
-          )}
-        </>
+      {data.map((item, i) =>
+        item.urlToImage && item.title ? (
+          <Link to={item.url} key={i} target="_blank" rel="noopener noreferrer">
+            <Card className="h-[290px] sm:h-[340px] md:h-[300px]">
+              <CardHeader>
+                <CardTitle style={{ overflow: "hidden", height: "150px" }}>
+                  <img
+                    src={item.urlToImage}
+                    alt={item.title}
+                    style={{ width: "100%", objectFit: "contain" }}
+                  />
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="card-content">{item.description}</p>
+              </CardContent>
+            </Card>
+          </Link>
+        ) : null
       )}
     </>
   );

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import comingSoon from "@/assets/coming-soon.png";
 
 const ProfilePage = () => {
   const { id } = useParams();
@@ -99,10 +100,11 @@ const ProfilePage = () => {
                 <p>No blogs available.</p>
               )}
             </TabsContent>
-            <TabsContent value="saved">
+            <TabsContent value="saved" className="flex flex-col items-center">
               <h2 className="text-center mt-4 md:text-4xl text-2xl font-bold">
                 Coming Soon
               </h2>
+              <img src={comingSoon} width={180} />
             </TabsContent>
           </Tabs>
         </div>

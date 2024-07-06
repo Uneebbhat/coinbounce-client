@@ -1,21 +1,11 @@
-import useAuthStore from "@/context/useAuthStore";
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const useEditBlog = () => {
-  const [blogData, setBlogData] = useState({
-    blogTitle: "",
-    blogDesc: "",
-    blogImg: null,
-  });
+const useEditBlog = (initialBlogData) => {
+  const [blogData, setBlogData] = useState(initialBlogData || {});
   const [isCreating, setIsCreating] = useState(false);
-  const { token } = useAuthStore();
   const navigate = useNavigate();
-
-  const handleFileChange = (e) => {
-    setBlogData({ ...blogData, blogImg: e.target.files[0] });
-  };
 
   const handleInputChange = (value, name) => {
     setBlogData({ ...blogData, [name]: value });
@@ -24,36 +14,22 @@ const useEditBlog = () => {
   const handleForm = async () => {
     setIsCreating(true);
     try {
-      const blogDataWithFile = new FormData();
-      blogDataWithFile.append("blogImg", blogData.blogImg);
-      blogDataWithFile.append("blogTitle", blogData.blogTitle);
-      blogDataWithFile.append("blogDesc", blogData.blogDesc);
-
-      const result = await axios.post(
-        `http://localhost:5000/api/edit/${id}`,
-        blogDataWithFile,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: token,
-          },
-        }
+      const response = await axios.put(
+        `http://localhost:5000/api/edit/${blogData.id}`,
+        blogData
       );
-      setIsCreating(false);
-      setBlogData(result.data);
+      console.log(response.data);
       navigate("/blogs");
-      console.log(result.data);
     } catch (error) {
-      console.error("Error signing up:", error.message);
+      console.error("Error updating blog:", error);
+    } finally {
       setIsCreating(false);
     }
   };
 
   return {
     blogData,
-    setBlogData,
     isCreating,
-    handleFileChange,
     handleInputChange,
     handleForm,
   };

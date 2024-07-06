@@ -31,7 +31,7 @@ const EditBlogPage = () => {
 
   return (
     <>
-      <div className="create-blog-container max-w-full w-[800px] mx-auto my-[40px]">
+      <div className="create-blog-container max-w-full w-[800px] mx-auto my-[10px]">
         <h2 className="text-center mb-4 text-3xl font-bold">Edit your blog</h2>
         <Card className="h-[450px]">
           <CardContent className="grid gap-4">
@@ -60,6 +60,7 @@ const EditBlogPage = () => {
                 id="blogTitle"
                 name="blogTitle"
                 placeholder="Enter blog title"
+                value={blogData.blogTitle}
                 onChange={(e) =>
                   handleInputChange(e.target.value, e.target.name)
                 }
@@ -86,7 +87,7 @@ const EditBlogPage = () => {
               onClick={handleForm}
               disabled={isCreating || !blogData.blogTitle || !blogData.blogDesc}
             >
-              {isCreating ? "Please wait" : "Create blog"}
+              {isCreating ? "Please wait" : "Edit blog"}
             </Button>
           </CardFooter>
         </Card>
