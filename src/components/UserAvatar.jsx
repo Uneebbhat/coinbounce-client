@@ -31,7 +31,7 @@ const UserAvatar = () => {
           <Link to={`/profile/${id}`}>
             <DropdownMenuItem>Profile</DropdownMenuItem>
           </Link>
-          <Link to={"/settings"}>
+          <Link to={`/profile/edit/${id}`}>
             <DropdownMenuItem>Settings</DropdownMenuItem>
           </Link>
           <DropdownMenuItem onClick={() => clearToken()}>
